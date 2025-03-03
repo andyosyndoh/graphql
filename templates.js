@@ -12,7 +12,7 @@ export const main = () => `
     <div class="container">
         <div class="header">
             <h2>Welcome, <span id="username">User</span></h2>
-            <button class="logout-btn">Logout</button>
+            <button class="logout-btn" id="logout-btn">Logout</button>
         </div>
         <div class="stats">
             <div class="stat-card">XP: <span id="xp">0</span></div>

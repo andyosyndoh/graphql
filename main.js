@@ -56,4 +56,10 @@ function displayLoginPage() {
 function displayMainPage() {
     const page = main()
     document.body.innerHTML = page;
+
+    const logout = document.getElementById("logout-btn")
+    logout.addEventListener("click", () => {
+        localStorage.removeItem("jwt")
+        window.location.reload();
+    })
 }

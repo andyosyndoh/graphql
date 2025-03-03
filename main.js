@@ -46,8 +46,7 @@ function displayLoginPage() {
 
       const data = await response.json();
       localStorage.setItem("jwt", data);
-      console.log(JSON.stringify(data));
-      alert("Login successful!");
+      displayMainPage()
     } catch (error) {
       errorMessage.textContent = error.message;
     }

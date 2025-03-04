@@ -1,5 +1,5 @@
 import { login, main } from "./templates.js";
-import {query} from "./queries.js"
+import { query } from "./queries.js"
 let Userdata;
 document.addEventListener("DOMContentLoaded", function () {
   //check localstorage for JWT tokens
@@ -111,37 +111,40 @@ async function fetchUserData() {
 }
 
 function updateUI(userData) {
-  const xpTransactions = userData.transactions.filter(
-    (tx) => tx.type === "xp" && tx.path.startsWith("/kisumu/module/")
-  );
-  const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+//   const xpTransactions = userData.transactions.filter(
+//     (tx) => tx.type === "xp" && tx.path.startsWith("/kisumu/module/")
+//   );
+//   const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
 
-  const totalAudits = userData.transactions.filter(
-    (tx) => tx.type === "audit"
-  ).length;
+  // const totalAudits = userData.transactions.filter(
+  //   (tx) => tx.type === "audit"
+  // ).length;
 
-  const averageGrade = userData.progresses.length
-    ? userData.progresses.reduce((sum, p) => sum + p.grade, 0) /
-      userData.progresses.length
-    : 0;
+  // const averageGrade = userData.progresses.length
+  //   ? userData.progresses.reduce((sum, p) => sum + p.grade, 0) /
+  //   userData.progresses.length
+  //   : 0;
 
-  document.getElementById("username").innerText = userData.login;
-  document.getElementById("xp").innerText = opt(totalXP);
-  document.getElementById("grade").innerText = averageGrade.toFixed(2);
-  document.getElementById("audits").innerText = totalAudits;
+  document.getElementById("username").innerText = userData.attrs.firstName + " " + userData.attrs.lastName;
+  // document.getElementById("xp").innerText = opt(totalXP);
+  // document.getElementById("grade").innerText = averageGrade.toFixed(2);
+  // document.getElementById("audits").innerText = totalAudits;
 }
 
 function opt(xp) {
+  if (xp < 1000) {
+    return xp + " Bytes";
+  }
   let mbs = xp / 1000;
   if (mbs < 1000) {
     return mbs.toFixed(2) + " KBs";
-  } else {
-    let gbs = mbs / 1000;
-    if (gbs < 1000) {
-      return gbs.toFixed(2) + " MBs";
-    } else {
-      let tbs = gbs / 1000;
-      return tbs.toFixed(2) + " GBs";
-    }
   }
+  let gbs = mbs / 1000;
+  if (gbs < 1000) {
+    return gbs.toFixed(2) + " MBs";
+  }
+  let tbs = gbs / 1000;
+  return tbs.toFixed(2) + " GBs";
 }
+
+ 

@@ -1,4 +1,4 @@
-import { login,main } from "./templates.js";
+import { login, main } from "./templates.js";
 document.addEventListener("DOMContentLoaded", function () {
   //check localstorage for JWT tokens
   const jwt = localStorage.getItem("jwt");
@@ -46,20 +46,119 @@ function displayLoginPage() {
 
       const data = await response.json();
       localStorage.setItem("jwt", data);
-      displayMainPage()
+      displayMainPage();
     } catch (error) {
       errorMessage.textContent = error.message;
     }
   });
 }
 
-function displayMainPage() {
-    const page = main()
-    document.body.innerHTML = page;
+async function displayMainPage() {
+  const page = main();
+  document.body.innerHTML = page;
 
-    const logout = document.getElementById("logout-btn")
-    logout.addEventListener("click", () => {
-        localStorage.removeItem("jwt")
-        window.location.reload();
-    })
+  const logout = document.getElementById("logout-btn");
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("jwt");
+    window.location.reload();
+  });
+
+  try {
+    const userData = await fetchUserData();
+  } catch (error) {
+    console.error("Error displaying main page:", error);
+  }
+}
+
+async function fetchUserData() {
+  const jwt = localStorage.getItem("jwt");
+  if (!jwt) {
+    throw new Error("No JWT token found");
+  }
+
+  const query = `
+    query {
+  user{
+    id
+    login
+    transactions (where: { type: { _eq: "xp" } }){
+      path
+      type
+      amount
+      createdAt
+    }
+    progresses {
+      grade
+      objectId
+    }
+  }
+}
+
+  `;
+
+  try {
+    const response = await fetch(
+      "https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+        body: JSON.stringify({ query }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch user data");
+    }
+
+    const result = await response.json();
+    console.log("GraphQL Response:", result);
+
+    if (result.data && result.data.user.length > 0) {
+      updateUI(result.data.user[0]); // Pass the first user object
+    } else {
+      console.error("No user data found");
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+function updateUI(userData) {
+  const xpTransactions = userData.transactions.filter(
+    (tx) => tx.type === "xp" && tx.path.startsWith("/kisumu/module/")
+  );
+  const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+
+  const totalAudits = userData.transactions.filter(
+    (tx) => tx.type === "audit"
+  ).length;
+
+  const averageGrade = userData.progresses.length
+    ? userData.progresses.reduce((sum, p) => sum + p.grade, 0) /
+      userData.progresses.length
+    : 0;
+
+  document.getElementById("username").innerText = userData.login;
+  document.getElementById("xp").innerText = opt(totalXP);
+  document.getElementById("grade").innerText = averageGrade.toFixed(2);
+  document.getElementById("audits").innerText = totalAudits;
+}
+
+function opt(xp) {
+  let mbs = xp / 1000;
+  if (mbs < 1000) {
+    return mbs.toFixed(2) + " KBs";
+  } else {
+    let gbs = mbs / 1000;
+    if (gbs < 1000) {
+      return gbs.toFixed(2) + " MBs";
+    } else {
+      let tbs = gbs / 1000;
+      return tbs.toFixed(2) + " GBs";
+    }
+  }
 }

@@ -1,35 +1,74 @@
+// export const query = `
+//     query {
+//         user{
+//             id
+//             login
+//             transactions{
+//                 id
+//                 path
+//                 type
+//                 amount
+//                 createdAt
+//                 objectId
+//             }
+//             progresses {
+//                 grade
+//                 objectId
+//                 path
+//             }
+//             results {
+//                 id
+//                 objectId
+//                 userId
+//                 grade
+//                 type
+//                 createdAt
+//                 path
+//             }
+//             objects {
+//                 name
+//                 type
+//                 attrs
+//                 createdAt
+//             }
+//         }
+//     }
+// `
+
 export const query = `
     query {
-        user{
+        user {
             id
             login
-            transactions (where: { type: { _eq: "xp" } }){
-                path
+            attrs
+            auditRatio
+            skills: transactions(order_by: [{type: desc}, {amount: desc}] distinct_on: [type] where: {type: {_like: "skill_%"}}) {
                 type
                 amount
-                createdAt
-                objectId
             }
-            progresses {
-                grade
-                objectId
-                path
+            audits {
+                group {
+                    captainId
+                    captainLogin
+                    path
+                    createdAt
+                    updatedAt
+                    members {
+                        userId
+                        userLogin
+                    }
+                }
             }
-            results {
-                id
-                objectId
-                userId
-                grade
-                type
-                createdAt
-                path
-            }
-            objects {
-                name
-                type
-                attrs
-                createdAt
-            }
+        }
+        event(where: {path: {_nlike: "%checkpoint%"}}) {
+            path
+            id
+        }
+        transaction(where: {type: {_eq: "xp"}}, order_by: {createdAt: desc}) {
+            amount
+            createdAt
+            eventId
+            path
         }
     }
 `

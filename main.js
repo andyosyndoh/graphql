@@ -1,4 +1,6 @@
 import { login, main } from "./templates.js";
+import {query} from "./queries.js"
+let Userdata;
 document.addEventListener("DOMContentLoaded", function () {
   //check localstorage for JWT tokens
   const jwt = localStorage.getItem("jwt");
@@ -76,26 +78,6 @@ async function fetchUserData() {
     throw new Error("No JWT token found");
   }
 
-  const query = `
-    query {
-  user{
-    id
-    login
-    transactions (where: { type: { _eq: "xp" } }){
-      path
-      type
-      amount
-      createdAt
-    }
-    progresses {
-      grade
-      objectId
-    }
-  }
-}
-
-  `;
-
   try {
     const response = await fetch(
       "https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql",
@@ -117,6 +99,7 @@ async function fetchUserData() {
     console.log("GraphQL Response:", result);
 
     if (result.data && result.data.user.length > 0) {
+
       updateUI(result.data.user[0]); // Pass the first user object
     } else {
       console.error("No user data found");

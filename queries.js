@@ -64,11 +64,13 @@ export const query = `
             path
             id
         }
-        transaction(where: {type: {_eq: "xp"}}, order_by: {createdAt: desc}) {
+        transaction(where: {_and: [{type: {_eq: "xp"}},{eventId:{_eq: 75}}]},order_by: { createdAt: desc }) {
             amount
             createdAt
             eventId
             path
+            type
+            userId
         }
     }
 `

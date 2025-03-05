@@ -100,7 +100,7 @@ async function fetchUserData() {
 
     if (result.data && result.data.user.length > 0) {
 
-      updateUI(result.data.user[0]); // Pass the first user object
+      updateUI(result); // Pass the first user object
     } else {
       console.error("No user data found");
     }
@@ -111,24 +111,16 @@ async function fetchUserData() {
 }
 
 function updateUI(userData) {
-//   const xpTransactions = userData.transactions.filter(
-//     (tx) => tx.type === "xp" && tx.path.startsWith("/kisumu/module/")
-//   );
-//   const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+  const xpTransactions = userData.data.transaction
+  const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+  console.log("TotalXP:", totalXP);
+  const auditRatio = userData.data.user[0].auditRatio
 
-  // const totalAudits = userData.transactions.filter(
-  //   (tx) => tx.type === "audit"
-  // ).length;
 
-  // const averageGrade = userData.progresses.length
-  //   ? userData.progresses.reduce((sum, p) => sum + p.grade, 0) /
-  //   userData.progresses.length
-  //   : 0;
-
-  document.getElementById("username").innerText = userData.attrs.firstName + " " + userData.attrs.lastName;
-  // document.getElementById("xp").innerText = opt(totalXP);
+  document.getElementById("username").innerText = userData.data.user[0].attrs.firstName + " " + userData.data.user[0].attrs.lastName;
+  document.getElementById("xp").innerText = opt(totalXP);
   // document.getElementById("grade").innerText = averageGrade.toFixed(2);
-  // document.getElementById("audits").innerText = totalAudits;
+  document.getElementById("audits").innerText = auditRatio.toFixed(1);
 }
 
 function opt(xp) {

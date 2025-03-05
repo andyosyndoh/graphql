@@ -11,13 +11,13 @@ export const login = () => `
 export const main = () => `
     <div class="container">
         <div class="header">
-            <h2>Welcome, <span id="username">User</span></h2>
+            <h2>Welcome, <span id="username">Loading...</span></h2>
             <button class="logout-btn" id="logout-btn">Logout</button>
         </div>
         <div class="stats">
             <div class="stat-card">XP: <span id="xp">0</span></div>
             <div class="stat-card">Grade: <span id="grade">0</span></div>
-            <div class="stat-card">Audits: <span id="audits">0</span></div>
+            <div class="stat-card">Audit Ratio: <span id="audits">0</span></div>
         </div>
         <div class="graph-section">
             <h3>Statistics</h3>

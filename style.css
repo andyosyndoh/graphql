@@ -121,13 +121,45 @@ body {
     width: 30%;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
-.graph-section {
-    margin-top: 40px;
-}
+
 svg {
     width: 100%;
     height: 250px;
     border-radius: 10px;
-    background: #21262d;
+    background: #4c6fa0;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
+
+.skills-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+}
+
+.skill-chart svg {
+    width: 100px;
+    height: 100px;
+    background: #3f6eaf;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    margin-bottom: 5px;
+}
+
+.skill-label {
+    font-size: 14px;
+    color: #c9d1d9;
+}
+

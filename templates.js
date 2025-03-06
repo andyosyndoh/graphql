@@ -1,11 +1,14 @@
 export const login = () => `
   <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" class="input-field" placeholder="Username or Email">
+    <h2>Login</h2>
+    <input type="text" id="username" class="input-field" placeholder="Username or Email">
+    <div class="password-container">
         <input type="password" id="password" class="input-field" placeholder="Password">
-        <button class="login-btn" id="login-btn">Login</button>
-        <p class="error-message" id="error-message"></p>
+        <button type="button" id="toggle-password" class="toggle-password">👁️</button>
     </div>
+    <button class="login-btn" id="login-btn">Login</button>
+    <p class="error-message" id="error-message"></p>
+</div>
 `;
 
 export const main = () => `

@@ -112,14 +112,15 @@ async function fetchUserData() {
 
 function updateUI(userData) {
   const xpTransactions = userData.data.transaction
+  const grades = userData.data.progress
   const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
-  console.log("TotalXP:", totalXP);
+  const totalgrade = grades.reduce((sum, grade) => sum + grade.grade, 0);
   const auditRatio = userData.data.user[0].auditRatio
 
 
   document.getElementById("username").innerText = userData.data.user[0].attrs.firstName + " " + userData.data.user[0].attrs.lastName;
   document.getElementById("xp").innerText = opt(totalXP);
-  // document.getElementById("grade").innerText = averageGrade.toFixed(2);
+  document.getElementById("grade").innerText = totalgrade.toFixed(2);
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
 }
 

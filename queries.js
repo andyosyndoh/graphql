@@ -42,7 +42,7 @@ export const query = `
             login
             attrs
             auditRatio
-            skills: transactions(order_by: [{type: desc}, {amount: desc}] distinct_on: [type] where: {type: {_like: "skill_%"}}) {
+            skills: transactions(where: { type: { _like: "skill_%" } }order_by: [{ amount: desc }]) {
                 type
                 amount
             }

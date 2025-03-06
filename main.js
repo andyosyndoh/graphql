@@ -75,15 +75,6 @@ async function displayMainPage() {
     localStorage.removeItem("jwt");
     window.location.reload();
   });
-  let clicked = false;
-  document.getElementById("username").addEventListener("click", function () {
-    clicked = !clicked;
-    if (clicked) {
-      document.getElementById("user-details").style.display = "block";
-    } else {
-      document.getElementById("user-details").style.display = "none";
-    }
-  });
 
   let show = false;
   document.getElementById("audits-btn").addEventListener("click", function () {

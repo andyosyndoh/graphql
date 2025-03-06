@@ -47,6 +47,7 @@ export const query = `
                 amount
             }
             audits(order_by: {createdAt: desc}){
+                closedAt
                 group {
                     captainId
                     captainLogin

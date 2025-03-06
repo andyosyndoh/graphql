@@ -32,7 +32,7 @@ export const main = () => `
         <h3>Statistics</h3>
         <div class="skills-section">
             <h3>Top 5 Skills</h3>
-            <svg id="skills-chart" width="300" height="300"></svg>
+            <div id="skills-container"></div>
         </div>
     </div>
     </div>

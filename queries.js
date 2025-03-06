@@ -46,7 +46,7 @@ export const query = `
                 type
                 amount
             }
-            audits {
+            audits(order_by: {createdAt: desc}){
                 group {
                     captainId
                     captainLogin
@@ -57,6 +57,9 @@ export const query = `
                         userId
                         userLogin
                     }
+                }
+                private {
+                    code
                 }
             }
         }

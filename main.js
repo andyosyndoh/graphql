@@ -145,9 +145,20 @@ function updateUI(userData) {
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
   // Assuming `data` is the response from GraphQL
   const skills = userData.data.user[0].skills;
+  const audits = userData.data.user[0].audits
   const topSkills = getTop5UniqueSkills(skills);
-  console.log(topSkills)
+  displayaudits(audits)
   drawSkillPies(topSkills);
+}
+
+function displayaudits(audits) {
+  console.log(audits)
+  console.log(audits.length)
+  if (audits.length === 0) {
+    container.innerText = "No audits found";
+    return;
+  }
+  
 }
 
 function opt(xp) {

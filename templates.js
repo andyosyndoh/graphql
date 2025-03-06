@@ -21,6 +21,7 @@ export const main = () => `
                 <p><strong>Age:</strong> <span id="dob">-</span></p>
             </div>
         </h2>
+        <button class= "audits-btn" id="audits-btn">No audits</button>
         <button class="logout-btn" id="logout-btn">Logout</button>
     </div>
     <div class="stats">

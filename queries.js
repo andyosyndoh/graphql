@@ -46,7 +46,7 @@ export const query = `
                 type
                 amount
             }
-            audits(order_by: {createdAt: desc}){
+            audits(order_by: {createdAt: desc},where: {closedAt: {_is_null: true}}) {
                 closedAt
                 group {
                     captainId

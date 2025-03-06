@@ -138,6 +138,7 @@ function updateUI(userData) {
 
   document.getElementById("username").innerText =
     userData.data.user[0].attrs.firstName;
+  document.getElementById("login").innerHTML = userData.data.user[0].login;
   document.getElementById("full-name").innerText =
     userData.data.user[0].attrs.firstName +
     " " +

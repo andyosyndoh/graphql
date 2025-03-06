@@ -40,6 +40,8 @@ export const main = () => `
                 <h3>Top 5 Skills</h3>
                 <div id="skills-container"></div>
             </div>
+            <h3>Xp Proggresion</h3>
+            <div id="xp-graph"></div>
         </div>
     </div>
 `;

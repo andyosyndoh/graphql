@@ -10,19 +10,30 @@ export const login = () => `
 
 export const main = () => `
     <div class="container">
-        <div class="header">
-            <h2>Welcome, <span id="username">Loading...</span></h2>
-            <button class="logout-btn" id="logout-btn">Logout</button>
+    <div class="header">
+        <h2>
+            Welcome, <span id="username" class="dropdown-toggle">Loading...</span>
+            <div class="dropdown-content" id="user-details">
+                <p><strong>Full Name:</strong> <span id="full-name">-</span></p>
+                <p><strong>Email:</strong> <span id="email">-</span></p>
+                <p><strong>Phone:</strong> <span id="phone">-</span></p>
+                <p><strong>Gender:</strong> <span id="gender">-</span></p>
+                <p><strong>Age:</strong> <span id="dob">-</span></p>
+            </div>
+        </h2>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+    </div>
+    <div class="stats">
+        <div class="stat-card">XP: <span id="xp">0</span></div>
+        <div class="stat-card">Grade: <span id="grade">0</span></div>
+        <div class="stat-card">Audit Ratio: <span id="audits">0</span></div>
+    </div>
+    <div class="graph-section">
+        <h3>Statistics</h3>
+        <div class="skills-chart">
+            <h4>Top 5 Skills</h4>
+            <svg id="skills-pie"></svg>
         </div>
-        <div class="stats">
-            <div class="stat-card">XP: <span id="xp">0</span></div>
-            <div class="stat-card">Grade: <span id="grade">0</span></div>
-            <div class="stat-card">Audit Ratio: <span id="audits">0</span></div>
-        </div>
-        <div class="graph-section">
-            <h3>Statistics</h3>
-            <svg id="graph1"></svg>
-            <svg id="graph2"></svg>
-        </div>
+    </div>
     </div>
 `

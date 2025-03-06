@@ -1,5 +1,5 @@
 import { login, main } from "./templates.js";
-import { query } from "./queries.js"
+import { query } from "./queries.js";
 let Userdata;
 document.addEventListener("DOMContentLoaded", function () {
   //check localstorage for JWT tokens
@@ -64,6 +64,15 @@ async function displayMainPage() {
     localStorage.removeItem("jwt");
     window.location.reload();
   });
+  let clicked = false;
+  document.getElementById("username").addEventListener("click", function () {
+    clicked =!clicked;
+    if (clicked) {
+      document.getElementById("user-details").style.display = "block";
+    } else {
+      document.getElementById("user-details").style.display = "none";
+    }
+  });
 
   try {
     const userData = await fetchUserData();
@@ -99,7 +108,6 @@ async function fetchUserData() {
     console.log("GraphQL Response:", result);
 
     if (result.data && result.data.user.length > 0) {
-
       updateUI(result); // Pass the first user object
     } else {
       console.error("No user data found");
@@ -111,14 +119,20 @@ async function fetchUserData() {
 }
 
 function updateUI(userData) {
-  const xpTransactions = userData.data.transaction
-  const grades = userData.data.progress
+  const xpTransactions = userData.data.transaction;
+  const grades = userData.data.progress;
   const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
   const totalgrade = grades.reduce((sum, grade) => sum + grade.grade, 0);
-  const auditRatio = userData.data.user[0].auditRatio
+  const auditRatio = userData.data.user[0].auditRatio;
 
 
-  document.getElementById("username").innerText = userData.data.user[0].attrs.firstName + " " + userData.data.user[0].attrs.lastName;
+  document.getElementById("username").innerText =
+    userData.data.user[0].attrs.firstName;
+  document.getElementById("full-name").innerText = userData.data.user[0].attrs.firstName + " " + userData.data.user[0].attrs.lastName;
+  document.getElementById("email").innerText = userData.data.user[0].attrs.email;
+  document.getElementById("phone").innerText = userData.data.user[0].attrs.phone;
+  document.getElementById("gender").innerText = userData.data.user[0].attrs.gender;
+  document.getElementById("dob").innerText = calculateAge(userData.data.user[0].attrs.dateOfBirth);
   document.getElementById("xp").innerText = opt(totalXP);
   document.getElementById("grade").innerText = totalgrade.toFixed(2);
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
@@ -140,4 +154,15 @@ function opt(xp) {
   return tbs.toFixed(2) + " GBs";
 }
 
- 
+function calculateAge(dob) {
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--; // Adjust if the birthday hasn't occurred yet this year
+  }
+  
+  return age;
+}

@@ -169,6 +169,7 @@ body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   z-index: 10;
   transition: all 0.3s ease;
+  text-align: left;
 }
 
 .dropdown-toggle:hover + .dropdown-content,

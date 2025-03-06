@@ -92,6 +92,22 @@ body {
 .logout-btn:hover {
     background: #cc0000;
 }
+
+.dropdown-toggle {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #21262d;
+    color: #c9d1d9;
+    padding: 10px;
+    font-size: small;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
 .stats {
     display: flex;
     justify-content: space-around;

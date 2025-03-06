@@ -72,5 +72,12 @@ export const query = `
             type
             userId
         }
+        progress(where: {_and: [{grade: {_is_null: false}},{eventId:{_eq: 75}}]},order_by: {createdAt: desc}){
+            id
+            createdAt
+            eventId
+            grade
+            path
+        }
     }
 `

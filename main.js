@@ -252,7 +252,7 @@ function drawSkillPies(skills) {
       fullCircle.setAttribute("cx", "50");
       fullCircle.setAttribute("cy", "50");
       fullCircle.setAttribute("r", "45");
-      fullCircle.setAttribute("fill", "#33ff57"); // Full green color
+      fullCircle.setAttribute("fill", "#6366f1"); // Full green color
 
       svg.appendChild(fullCircle);
     } else if (skill.amount > 0) {
@@ -276,7 +276,7 @@ function drawSkillPies(skills) {
         "path"
       );
       path.setAttribute("d", pathData);
-      path.setAttribute("fill", "#33ff57");
+      path.setAttribute("fill", "#6366f1");
 
       svg.appendChild(path);
     }
@@ -358,7 +358,7 @@ function drawXPGraph(xpData) {
   });
 
   // SVG settings
-  const width = container.clientWidth || 800; // Adjust to available width
+  const width = container.clientWidth  // Adjust to available width
   const height = 500; // Increased height for better visibility
   const padding = 60;
 
@@ -380,7 +380,7 @@ function drawXPGraph(xpData) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width", width);
   svg.setAttribute("height", height);
-  svg.style.background = "#1e1e1e"; // Dark background for visibility
+  svg.style.background = "#1e293b"; // Dark background for visibility
 
   // Draw axes
   const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -388,7 +388,7 @@ function drawXPGraph(xpData) {
   xAxis.setAttribute("y1", height - padding);
   xAxis.setAttribute("x2", width - padding);
   xAxis.setAttribute("y2", height - padding);
-  xAxis.setAttribute("stroke", "#58a6ff");
+  xAxis.setAttribute("stroke", "#6366f1");
   xAxis.setAttribute("stroke-width", "2");
 
   const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -396,7 +396,7 @@ function drawXPGraph(xpData) {
   yAxis.setAttribute("y1", height - padding);
   yAxis.setAttribute("x2", padding);
   yAxis.setAttribute("y2", padding);
-  yAxis.setAttribute("stroke", "#58a6ff");
+  yAxis.setAttribute("stroke", "#6366f1")
   yAxis.setAttribute("stroke-width", "2");
 
   svg.appendChild(xAxis);
@@ -411,7 +411,7 @@ function drawXPGraph(xpData) {
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", pathData);
   path.setAttribute("fill", "none");
-  path.setAttribute("stroke", "#33ff57");
+  path.setAttribute("stroke", "#6366f1");
   path.setAttribute("stroke-width", "3");
 
   svg.appendChild(path);
@@ -439,7 +439,7 @@ function drawXPGraph(xpData) {
     circle.setAttribute("cx", xScale(point.date));
     circle.setAttribute("cy", yScale(point.xp));
     circle.setAttribute("r", "6");
-    circle.setAttribute("fill", "#ff5733");
+    circle.setAttribute("fill", "#fff");
     circle.style.cursor = "pointer";
 
     // Tooltip event listeners

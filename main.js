@@ -17,6 +17,19 @@ function displayLoginPage() {
   const loginTemplate = login();
   document.body.innerHTML = loginTemplate;
 
+  document
+    .getElementById("toggle-password")
+    .addEventListener("click", function () {
+      const passwordInput = document.getElementById("password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        this.textContent = "🙈"; // Change icon when password is visible
+      } else {
+        passwordInput.type = "password";
+        this.textContent = "👁️"; // Change icon back to eye
+      }
+    });
+
   const loginForm = document.getElementById("login-btn");
   const errorMessage = document.getElementById("error-message");
 
@@ -161,7 +174,7 @@ function updateUI(userData) {
   const topSkills = getTop5UniqueSkills(skills);
   updateAudits(audits);
   drawSkillPies(topSkills);
-  drawXPGraph(xpTransactions)
+  drawXPGraph(xpTransactions);
 }
 
 function opt(xp) {
@@ -198,10 +211,10 @@ function calculateAge(dob) {
 
 function getDay(date) {
   return new Date(date).toLocaleDateString("en-US", {
-      weekday: "short",  // e.g., Mon
-      month: "short",    // e.g., Jan
-      day: "2-digit",    // e.g., 01
-      year: "numeric"    // e.g., 2024
+    weekday: "short", // e.g., Mon
+    month: "short", // e.g., Jan
+    day: "2-digit", // e.g., 01
+    year: "numeric", // e.g., 2024
   });
 }
 
@@ -340,8 +353,8 @@ function drawXPGraph(xpData) {
   // Convert XP to cumulative XP over time
   let cumulativeXP = 0;
   const points = xpData.map((entry) => {
-      cumulativeXP += entry.amount;
-      return { date: new Date(entry.createdAt), xp: cumulativeXP };
+    cumulativeXP += entry.amount;
+    return { date: new Date(entry.createdAt), xp: cumulativeXP };
   });
 
   // SVG settings
@@ -357,10 +370,12 @@ function drawXPGraph(xpData) {
 
   // Scale functions
   const xScale = (date) =>
-      padding + ((date - minDate) / (maxDate - minDate)) * (width - 2 * padding);
+    padding + ((date - minDate) / (maxDate - minDate)) * (width - 2 * padding);
   const yScale = (xp) =>
-      height - padding - ((xp - minXP) / (maxXP - minXP)) * (height - 2 * padding);
-console.log(width, height)
+    height -
+    padding -
+    ((xp - minXP) / (maxXP - minXP)) * (height - 2 * padding);
+  console.log(width, height);
   // Create SVG element
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width", width);
@@ -390,7 +405,7 @@ console.log(width, height)
   // Draw XP progression line
   let pathData = `M ${xScale(points[0].date)},${yScale(points[0].xp)}`;
   points.forEach((point) => {
-      pathData += ` L ${xScale(point.date)},${yScale(point.xp)}`;
+    pathData += ` L ${xScale(point.date)},${yScale(point.xp)}`;
   });
 
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -417,29 +432,32 @@ console.log(width, height)
 
   // Append circles for each point
   points.forEach((point) => {
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      circle.setAttribute("cx", xScale(point.date));
-      circle.setAttribute("cy", yScale(point.xp));
-      circle.setAttribute("r", "6");
-      circle.setAttribute("fill", "#ff5733");
-      circle.style.cursor = "pointer";
+    const circle = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle.setAttribute("cx", xScale(point.date));
+    circle.setAttribute("cy", yScale(point.xp));
+    circle.setAttribute("r", "6");
+    circle.setAttribute("fill", "#ff5733");
+    circle.style.cursor = "pointer";
 
-      // Tooltip event listeners
-      circle.addEventListener("mouseover", (event) => {
-          tooltip.style.display = "block";
-          tooltip.textContent = `XP: ${opt(point.xp)} on ${getDay(point.date)}`;
-      });
+    // Tooltip event listeners
+    circle.addEventListener("mouseover", (event) => {
+      tooltip.style.display = "block";
+      tooltip.textContent = `XP: ${opt(point.xp)} on ${getDay(point.date)}`;
+    });
 
-      circle.addEventListener("mousemove", (event) => {
-          tooltip.style.left = `${event.pageX}px`;
-          tooltip.style.top = `${event.pageY}px`;
-      });
+    circle.addEventListener("mousemove", (event) => {
+      tooltip.style.left = `${event.pageX}px`;
+      tooltip.style.top = `${event.pageY}px`;
+    });
 
-      circle.addEventListener("mouseout", () => {
-          tooltip.style.display = "none";
-      });
+    circle.addEventListener("mouseout", () => {
+      tooltip.style.display = "none";
+    });
 
-      svg.appendChild(circle);
+    svg.appendChild(circle);
   });
 
   // Append the graph to the container

@@ -15,7 +15,7 @@ export const main = () => `
     <div class="container">
         <div class="header">
             <h2>
-                Welcome, <span id="username" class="dropdown-toggle">Loading...</span>
+                Welcome, <span id="username" class="dropdown-toggle">Loading...</span> 
                 <div class="dropdown-content" id="user-details">
                     <p><strong>Login:</strong> <span id="login">-</span></p>
                     <p><strong>Full Name:</strong> <span id="full-name">-</span></p>
@@ -25,11 +25,13 @@ export const main = () => `
                     <p><strong>Age:</strong> <span id="dob">-</span></p>
                 </div>
             </h2>
-            <button class="audits-btn" id="audits-btn">No audits</button>
-            <div class="audits-dropdown" id="audits-dropdown">
-                <!-- Audit items will be dynamically added here -->
+            <div class="header-btns">
+                <button class="audits-btn" id="audits-btn">No audits</button>
+                <div class="audits-dropdown" id="audits-dropdown">
+                     <!-- Audit items will be dynamically added here -->
+                </div>
+                <button class="logout-btn" id="logout-btn">Logout</button>
             </div>
-            <button class="logout-btn" id="logout-btn">Logout</button>
         </div>
 
         <div class="stats">

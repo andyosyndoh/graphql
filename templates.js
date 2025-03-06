@@ -30,9 +30,9 @@ export const main = () => `
     </div>
     <div class="graph-section">
         <h3>Statistics</h3>
-        <div class="skills-chart">
-            <h4>Top 5 Skills</h4>
-            <svg id="skills-pie"></svg>
+        <div class="skills-section">
+            <h3>Top 5 Skills</h3>
+            <svg id="skills-chart" width="300" height="300"></svg>
         </div>
     </div>
     </div>

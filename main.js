@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // display login page
     displayLoginPage();
   }
-
-  // login button click event
 });
 
 function displayLoginPage() {
@@ -71,6 +69,19 @@ async function displayMainPage() {
       document.getElementById("user-details").style.display = "block";
     } else {
       document.getElementById("user-details").style.display = "none";
+    }
+  });
+
+  let show = false;
+  document.getElementById("audits-btn").addEventListener("click", function () {
+    show = !show;
+    if (
+      show &&
+      document.getElementById("audits-btn").innerHTML !== "No audits"
+    ) {
+      document.getElementById("audits-dropdown").style.display = "block";
+    } else {
+      document.getElementById("audits-dropdown").style.display = "none";
     }
   });
 
@@ -145,20 +156,10 @@ function updateUI(userData) {
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
   // Assuming `data` is the response from GraphQL
   const skills = userData.data.user[0].skills;
-  const audits = userData.data.user[0].audits
+  const audits = userData.data.user[0].audits;
   const topSkills = getTop5UniqueSkills(skills);
-  displayaudits(audits)
+  updateAudits(audits);
   drawSkillPies(topSkills);
-}
-
-function displayaudits(audits) {
-  console.log(audits)
-  console.log(audits.length)
-  if (audits.length === 0) {
-    container.innerText = "No audits found";
-    return;
-  }
-  
 }
 
 function opt(xp) {
@@ -225,7 +226,7 @@ function drawSkillPies(skills) {
 
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", pathData);
-    path.setAttribute("fill", "#33ff57")
+    path.setAttribute("fill", "#33ff57");
 
     // Create circle for background
     const bgCircle = document.createElementNS(
@@ -267,4 +268,37 @@ function getTop5UniqueSkills(skills) {
     .map(([type, amount]) => ({ type, amount }))
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 5);
+}
+
+// Function to update audits dynamically
+function updateAudits(audits) {
+  const auditsBtn = document.getElementById("audits-btn");
+  const auditsDropdown = document.getElementById("audits-dropdown");
+
+  auditsDropdown.innerHTML = ""; // Clear previous audits
+
+  if (audits.length === 0) {
+    auditsBtn.textContent = "No audits";
+    auditsDropdown.style.display = "none";
+    return;
+  }
+
+  auditsBtn.textContent = `Audits (${audits.length})`;
+
+  audits.forEach((audit) => {
+    const projectname = audit.group.path.split("/").pop();
+    let members = "";
+    for (let user of audit.group.members) {
+      members += " " + user.userLogin;
+    }
+    const auditDiv = document.createElement("div");
+    auditDiv.classList.add("audit-item");
+    auditDiv.innerHTML = `
+          <p><strong>Project:</strong> ${projectname}</p>
+          <p><strong>Group Admin:</strong> ${audit.group.captainLogin}</p>
+          <p><strong>Members:</strong> ${members}</p>
+          <p><strong>Audit Code:</strong> ${audit.private.code}</p>
+      `;
+    auditsDropdown.appendChild(auditDiv);
+  });
 }

@@ -144,7 +144,7 @@ async function fetchUserData() {
 }
 
 function updateUI(userData) {
-  const xpTransactions = userData.data.transaction;
+  const xpTransactions = userData.data.transaction.filter(tx => tx.type === "xp");
   const grades = userData.data.progress;
   const totalXP = xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
   const totalgrade = grades.reduce((sum, grade) => sum + grade.grade, 0);

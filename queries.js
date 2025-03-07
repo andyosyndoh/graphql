@@ -9,9 +9,12 @@ export const query = `
                 type
                 amount
             }
-            audits(order_by: {createdAt: desc},where: {closedAt: {_is_null: true}}) {
+            audits(order_by: {createdAt: desc},where: {closedAt: {_is_null: true} group: {captain: { canAccessPlatform: {_eq: true}}}}) {
                 closedAt
                 group {
+                    captain{
+                        canAccessPlatform
+                    }
                     captainId
                     captainLogin
                     path

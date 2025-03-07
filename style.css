@@ -349,7 +349,7 @@ body {
   font-weight: 500;
 }
 
-#xp-graph {
+#xp-graph, #xp-graph-container {
   margin-top: 24px;
   /* max-height: 400px; */
   /* width:100%; */

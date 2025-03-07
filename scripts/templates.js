@@ -54,7 +54,7 @@ export const main = () => `
     </div>
 `;
 
-export const errorPage = () =>`
+export const errorPage = () => `
         <div class="error-container">
             <h1>⚠️ Network Error</h1>
             <p>It looks like you're offline or the server is unreachable.</p>

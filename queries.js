@@ -26,10 +26,9 @@ export const query = `
                     code
                 }
             }
-        }
-        event(where: {path: {_nlike: "%checkpoint%"}}) {
-            path
-            id
+            events(where: {eventId: {_eq: 75}}) {
+                level
+            }
         }
         transaction(where: {_and: [{type: {_eq: "xp"}},{eventId:{_eq: 75}}]},order_by: { createdAt: desc }) {
             amount

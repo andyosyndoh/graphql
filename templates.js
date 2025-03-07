@@ -48,9 +48,6 @@ export const main = () => `
             </div>
             <h3>Xp Proggresion</h3>
             <div id="xp-graph"></div>
-            <div class="graph-container">
-                <svg id="xpgraph" viewBox="0 0 600 300"></svg>
-            </div>
         </div>
     </div>
 `;

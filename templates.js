@@ -42,7 +42,7 @@ export const main = () => `
         </div>
         <div class="graph-section">
             <h3>Statistics</h3>
-            <h3>Top 5 Skills</h3>
+            <h3>Top Skills</h3>
             <div class="skills-section">
                 <div id="skills-container"></div>
             </div>

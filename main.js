@@ -163,7 +163,7 @@ function updateUI(userData) {
   // Assuming `data` is the response from GraphQL
   const skills = userData.data.user[0].skills;
   const audits = userData.data.user[0].audits;
-  const topSkills = getTop5UniqueSkills(skills);
+  const topSkills = getTopUniqueSkills(skills);
   updateAudits(audits);
   drawSkillPies(topSkills);
   drawXPGraph(xpTransactions);
@@ -285,7 +285,7 @@ function drawSkillPies(skills) {
   });
 }
 
-function getTop5UniqueSkills(skills) {
+function getTopUniqueSkills(skills) {
   const skillMap = new Map();
 
   skills.forEach((skill) => {
@@ -298,7 +298,7 @@ function getTop5UniqueSkills(skills) {
   return [...skillMap.entries()]
     .map(([type, amount]) => ({ type, amount }))
     .sort((a, b) => b.amount - a.amount)
-    .slice(0, 5);
+    .slice(0, 8);
 }
 
 // Function to update audits dynamically
@@ -412,7 +412,7 @@ function drawXPGraph(xpData) {
   const tooltip = document.createElement("div");
   tooltip.classList.add("tooltip");
   tooltip.style.position = "absolute";
-  tooltip.style.background = "black";
+  tooltip.style.background = "#6366f1";
   tooltip.style.color = "white";
   tooltip.style.padding = "5px 10px";
   tooltip.style.borderRadius = "5px";
@@ -431,7 +431,7 @@ function drawXPGraph(xpData) {
     circle.setAttribute("cx", xScale(point.date));
     circle.setAttribute("cy", yScale(point.xp));
     circle.setAttribute("r", "6");
-    circle.setAttribute("fill", "#fff");
+    circle.setAttribute("fill", "#6366f1");
     circle.style.cursor = "pointer";
 
     // Tooltip event listeners

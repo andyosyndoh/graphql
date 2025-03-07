@@ -38,6 +38,7 @@ export const main = () => `
             <div class="stat-card">XP: <span id="xp">0</span></div>
             <div class="stat-card">Grade: <span id="grade">0</span></div>
             <div class="stat-card">Audit Ratio: <span id="audits">0</span></div>
+            <div class="stat-card">Level: <span id="level">0</span></div>
         </div>
         <div class="graph-section">
             <h3>Statistics</h3>
@@ -47,6 +48,9 @@ export const main = () => `
             </div>
             <h3>Xp Proggresion</h3>
             <div id="xp-graph"></div>
+            <div class="graph-container">
+                <svg id="xpgraph" viewBox="0 0 600 300"></svg>
+            </div>
         </div>
     </div>
 `;

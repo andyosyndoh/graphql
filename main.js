@@ -159,6 +159,7 @@ function updateUI(userData) {
   document.getElementById("xp").innerText = opt(totalXP);
   document.getElementById("grade").innerText = totalgrade.toFixed(2);
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
+  document.getElementById("level").innerText = userData.data.user[0].events[0].level
   // Assuming `data` is the response from GraphQL
   const skills = userData.data.user[0].skills;
   const audits = userData.data.user[0].audits;

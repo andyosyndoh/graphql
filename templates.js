@@ -51,3 +51,11 @@ export const main = () => `
         </div>
     </div>
 `;
+
+export const errorPage = () =>`
+        <div class="error-container">
+            <h1>⚠️ Network Error</h1>
+            <p>It looks like you're offline or the server is unreachable.</p>
+            <a href="/" > <button class="retry-btn" onclick="goHome()">Go to Home</button></a>
+        </div>
+`

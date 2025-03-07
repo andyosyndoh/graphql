@@ -48,6 +48,7 @@ export const main = () => `
             </div>
             <h3>Xp Proggresion</h3>
             <div id="xp-graph"></div>
+            <h3>Audit Ratio</h3>
             <div id="xp-graph-container"></div>
         </div>
     </div>

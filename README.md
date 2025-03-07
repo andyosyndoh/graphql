@@ -2,10 +2,10 @@
 
 ## Objectives
 
-The project fetches user data from [Zone 01 kisumu](https://learn.zone01kisumu.ke) and displays user data in a nice format.
+The project fetches user data from [`Zone 01 kisumu`](https://learn.zone01kisumu.ke) and displays user data in a nice format.
 
 - API Endpoint: [`https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql`](https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql)
-- Authentication is required via **JWT (JSON Web Token)** obtained from the login [endpoint](https://learn.zone01kisumu.ke/api/auth/signin).
+- Authentication is required via **JWT (JSON Web Token)** obtained from the login [`endpoint`](https://learn.zone01kisumu.ke/api/auth/signin).
 
 ## Features
 

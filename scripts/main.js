@@ -35,7 +35,7 @@ function displayLoginPage() {
     });
 
   const loginForm = document.getElementById("login-btn");
-  
+
 
   loginForm.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ function displayLoginPage() {
   });
 }
 
- async function loginsubmit() {
+async function loginsubmit() {
   const errorMessage = document.getElementById("error-message");
   errorMessage.textContent = "";
 

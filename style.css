@@ -2,7 +2,8 @@ body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #0f172a; /* Deeper blue background */
+  background: #0f172a;
+  /* Deeper blue background */
   color: #e2e8f0;
   display: flex;
   justify-content: center;
@@ -11,13 +12,16 @@ body {
   overflow-y: auto;
   transition: all 0.3s ease;
 }
+
 .login-container {
   width: 100%;
   max-width: 400px;
-  background: #1e293b; /* Slate-800 */
+  background: #1e293b;
+  /* Slate-800 */
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.3); /* Indigo shadow */
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.3);
+  /* Indigo shadow */
   text-align: center;
   transition: all 0.3s ease;
   display: flex;
@@ -27,18 +31,22 @@ body {
 
 .login-container h2 {
   margin-bottom: 20px;
-  color: #6366f1; /* Indigo-500 */
+  color: #6366f1;
+  /* Indigo-500 */
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .input-field {
-  width: 100%; /* Make inputs the same width */
+  width: 100%;
+  /* Make inputs the same width */
   max-width: 320px;
   padding: 12px 16px;
   margin: 12px 0;
-  background: #0f172a; /* Slate-900 */
-  border: 1px solid #334155; /* Slate-700 */
+  background: #0f172a;
+  /* Slate-900 */
+  border: 1px solid #334155;
+  /* Slate-700 */
   border-radius: 8px;
   color: white;
   font-size: 16px;
@@ -47,7 +55,8 @@ body {
 }
 
 .password-container {
-  width: 100%; /* Make inputs the same width */
+  width: 100%;
+  /* Make inputs the same width */
   max-width: 320px;
   font-size: 16px;
   transition: all 0.2s ease;
@@ -61,7 +70,8 @@ body {
 }
 
 .password-container .input-field {
-  flex: 1; /* Make password input take full width */
+  flex: 1;
+  /* Make password input take full width */
   /* padding-right: 40px; Avoid overlap with eye icon */
 }
 
@@ -72,16 +82,19 @@ body {
   border: none;
   cursor: pointer;
   font-size: 18px;
-  color: #64748b; /* Slate-500 */
+  color: #64748b;
+  /* Slate-500 */
   transition: color 0.2s ease;
 }
 
 .toggle-password:hover {
-  color: #e2e8f0; /* Slate-200 */
+  color: #e2e8f0;
+  /* Slate-200 */
 }
 
 .login-btn {
-  background: linear-gradient(135deg, #6366f1, #4f46e5); /* Indigo gradient */
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  /* Indigo gradient */
   color: white;
   border: none;
   padding: 12px 15px;
@@ -104,7 +117,8 @@ body {
 }
 
 .error-message {
-  color: #ef4444; /* Red-500 */
+  color: #ef4444;
+  /* Red-500 */
   margin-top: 10px;
   font-size: 14px;
   font-weight: 500;
@@ -114,7 +128,8 @@ body {
 .container {
   width: 100%;
   /* max-width: 1200px; */
-  background: #1e293b; /* Slate-800 */
+  background: #1e293b;
+  /* Slate-800 */
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(30, 64, 175, 0.3);
@@ -132,11 +147,13 @@ body {
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #334155; /* Slate-700 */
+  border-bottom: 1px solid #334155;
+  /* Slate-700 */
 }
 
 .header h2 {
-  color: #6366f1; /* Indigo-500 */
+  color: #6366f1;
+  /* Indigo-500 */
   margin: 0;
   font-size: 28px;
   font-weight: 600;
@@ -146,7 +163,8 @@ body {
 .dropdown-toggle {
   cursor: pointer;
   text-decoration: none;
-  color: #818cf8; /* Indigo-400 */
+  color: #818cf8;
+  /* Indigo-400 */
   font-weight: 500;
   transition: all 0.2s ease;
   padding: 6px 12px;
@@ -154,14 +172,17 @@ body {
 }
 
 .dropdown-toggle:hover {
-  background: #334155; /* Slate-700 */
-  color: #c7d2fe; /* Indigo-200 */
+  background: #334155;
+  /* Slate-700 */
+  color: #c7d2fe;
+  /* Indigo-200 */
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background: #0f172a; /* Slate-900 */
+  background: #0f172a;
+  /* Slate-900 */
   color: #e2e8f0;
   padding: 16px;
   font-size: 14px;
@@ -172,13 +193,15 @@ body {
   text-align: left;
 }
 
-.dropdown-toggle:hover + .dropdown-content,
+.dropdown-toggle:hover+.dropdown-content,
 .dropdown-content:hover {
   display: block;
 }
 
-.audits-btn, .logout-btn {
-  background: linear-gradient(135deg, #6366f1, #4f46e5); /* Indigo gradient */
+.audits-btn,
+.logout-btn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  /* Indigo gradient */
   color: white;
   border: none;
   padding: 10px 16px;
@@ -198,7 +221,8 @@ body {
 }
 
 .logout-btn:hover {
-  background: linear-gradient(135deg, #ef4444, #dc2626); /* Red gradient on hover */
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  /* Red gradient on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
@@ -208,7 +232,8 @@ body {
   position: absolute;
   top: 60px;
   right: 120px;
-  background: #0f172a; /* Slate-900 */
+  background: #0f172a;
+  /* Slate-900 */
   color: white;
   border-radius: 12px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
@@ -266,15 +291,18 @@ body {
 }
 
 .stat-card {
-  background: #0f172a; /* Slate-900 */
-  color: #818cf8; /* Indigo-400 */
+  background: #0f172a;
+  /* Slate-900 */
+  color: #818cf8;
+  /* Indigo-400 */
   padding: 24px;
   border-radius: 12px;
   width: 30%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   font-size: 18px;
   transition: all 0.3s ease;
-  border: 1px solid #334155; /* Slate-700 */
+  border: 1px solid #334155;
+  /* Slate-700 */
 }
 
 .stat-card:hover {
@@ -290,19 +318,24 @@ body {
   margin-top: 8px;
 }
 
-.graph-section, .skills-section {
+.graph-section,
+.skills-section {
   margin-top: 48px;
   text-align: center;
-  background: #1e293b; /* Slate-800 */
+  background: #1e293b;
+  /* Slate-800 */
   padding: 24px;
   border-radius: 12px;
-  border: 1px solid #334155; /* Slate-700 */
+  border: 1px solid #334155;
+  /* Slate-700 */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
-.graph-section h3, .skills-section h3 {
-  color: #6366f1; /* Indigo-500 */
+.graph-section h3,
+.skills-section h3 {
+  color: #6366f1;
+  /* Indigo-500 */
   font-size: 22px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -332,7 +365,8 @@ body {
 .skill-chart svg {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #6366f1, #4f46e5); /* Indigo gradient */
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  /* Indigo gradient */
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
   margin-bottom: 10px;
@@ -345,17 +379,20 @@ body {
 
 .skill-label {
   font-size: 15px;
-  color: #c7d2fe; /* Indigo-200 */
+  color: #c7d2fe;
+  /* Indigo-200 */
   font-weight: 500;
 }
 
-#xp-graph, #xp-graph-container {
+#xp-graph,
+#xp-graph-container {
   margin-top: 24px;
   /* max-height: 400px; */
   /* width:100%; */
   overflow-y: auto;
   padding: 16px;
-  background: #1e293b; /* Slate-900 */
+  background: #1e293b;
+  /* Slate-900 */
   border-radius: 12px;
   border: 1px solid #334155;
 }
@@ -381,12 +418,12 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .stat-card {
     width: 90%;
     margin-bottom: 16px;
   }
-  
+
   .container {
     padding: 24px;
   }

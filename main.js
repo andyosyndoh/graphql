@@ -1,6 +1,5 @@
-import { login, main } from "./templates.js";
+import { login, main, errorPage } from "./templates.js";
 import { query } from "./queries.js";
-let Userdata;
 document.addEventListener("DOMContentLoaded", function () {
   //check localstorage for JWT tokens
   const jwt = localStorage.getItem("jwt");
@@ -77,15 +76,25 @@ async function displayMainPage() {
   });
 
   let show = false;
-  document.getElementById("audits-btn").addEventListener("click", function () {
+  const auditsBtn = document.getElementById("audits-btn");
+  const auditsDropdown = document.getElementById("audits-dropdown");
+
+  auditsBtn.addEventListener("click", function (event) {
+    event.stopPropagation(); // Prevents the document click from firing immediately
     show = !show;
-    if (
-      show &&
-      document.getElementById("audits-btn").innerHTML !== "No audits"
-    ) {
-      document.getElementById("audits-dropdown").style.display = "block";
+
+    if (show && auditsBtn.innerHTML !== "No audits") {
+      auditsDropdown.style.display = "block";
     } else {
-      document.getElementById("audits-dropdown").style.display = "none";
+      auditsDropdown.style.display = "none";
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    // Check if the click is outside the dropdown and button
+    if (!auditsDropdown.contains(event.target) && event.target !== auditsBtn) {
+      auditsDropdown.style.display = "none";
+      show = false; // Ensure state is updated
     }
   });
 
@@ -93,6 +102,7 @@ async function displayMainPage() {
     const userData = await fetchUserData();
   } catch (error) {
     console.error("Error displaying main page:", error);
+    document.body.innerHTML = errorPage();
   }
 }
 
@@ -159,7 +169,8 @@ function updateUI(userData) {
   document.getElementById("xp").innerText = opt(totalXP);
   document.getElementById("grade").innerText = totalgrade.toFixed(2);
   document.getElementById("audits").innerText = auditRatio.toFixed(1);
-  document.getElementById("level").innerText = userData.data.user[0].events[0].level
+  document.getElementById("level").innerText =
+    userData.data.user[0].events[0].level;
   // Assuming `data` is the response from GraphQL
   const skills = userData.data.user[0].skills;
   const audits = userData.data.user[0].audits;
@@ -350,7 +361,7 @@ function drawXPGraph(xpData) {
   });
 
   // SVG settings
-  const width = container.clientWidth  // Adjust to available width
+  const width = container.clientWidth; // Adjust to available width
   const height = 500; // Increased height for better visibility
   const padding = 60;
 
@@ -388,7 +399,7 @@ function drawXPGraph(xpData) {
   yAxis.setAttribute("y1", height - padding);
   yAxis.setAttribute("x2", padding);
   yAxis.setAttribute("y2", padding);
-  yAxis.setAttribute("stroke", "#6366f1")
+  yAxis.setAttribute("stroke", "#6366f1");
   yAxis.setAttribute("stroke-width", "2");
 
   svg.appendChild(xAxis);

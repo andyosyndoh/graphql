@@ -33,7 +33,7 @@ export const query = `
                 level
             }
         }
-        transaction(where: {_and: [{type: {_eq: "xp"}},{eventId:{_eq: 75}}]},order_by: { createdAt: desc }) {
+        transaction(where: {_and: [{eventId:{_eq: 75}}]},order_by: { createdAt: desc }) {
             amount
             createdAt
             eventId

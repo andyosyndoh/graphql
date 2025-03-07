@@ -48,6 +48,15 @@ export const main = () => `
             </div>
             <h3>Xp Proggresion</h3>
             <div id="xp-graph"></div>
+            <div id="xp-graph-container"></div>
         </div>
     </div>
 `;
+
+export const errorPage = () =>`
+        <div class="error-container">
+            <h1>⚠️ Network Error</h1>
+            <p>It looks like you're offline or the server is unreachable.</p>
+            <a href="/" > <button class="retry-btn" onclick="goHome()">Go to Home</button></a>
+        </div>
+`
